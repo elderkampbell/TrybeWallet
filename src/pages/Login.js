@@ -29,7 +29,7 @@ class Login extends React.Component {
 
   inputValidation = () => {
     const { email, password } = this.state;
-    const minLenght = 6;
+    const minLenght = 5;
     const testValidation = /\S+@\S+\.\S+/;
     const emailValidation = testValidation.test(email);
     if (emailValidation && password.length > minLenght) {
