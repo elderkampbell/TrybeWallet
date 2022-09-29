@@ -19,7 +19,6 @@ class Login extends React.Component {
   };
 
   loginDispatch = () => {
-    console.log('xablau');
     const { dispatch, history } = this.props;
     dispatch(getLoginAction(
       this.state,
