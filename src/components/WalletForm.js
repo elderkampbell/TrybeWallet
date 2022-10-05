@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { fetchCurrencies } from '../redux/actions';
+import { fetchCurrencies, fetchexchangerate } from '../redux/actions';
 
 class WalletForm extends Component {
   state = {
-    // id: 0,
+    id: 0,
     description: '',
     tag: 'Alimentação',
     method: 'Dinheiro',
@@ -23,7 +23,11 @@ class WalletForm extends Component {
   };
 
   handleClick = (() => {
+    const { dispatchexchangerate } = this.props;
+    dispatchexchangerate(this.state);
+    const { id } = this.state;
     this.setState({
+      id: id + 1,
       description: '',
       tag: 'Alimentação',
       method: 'Dinheiro',
@@ -109,10 +113,12 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  dispatchexchangerate: (state) => dispatch(fetchexchangerate(state)),
   dataCurrencies: () => dispatch(fetchCurrencies()),
 });
 
 WalletForm.propTypes = {
+  dispatchexchangerate: PropTypes.func.isRequired,
   wallet: PropTypes.shape.isRequired,
   dataCurrencies: PropTypes.shape.isRequired,
 };
