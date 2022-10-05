@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getLoginAction } from '../redux/actions/index';
+import { getLoginAction, fetchCurrencies } from '../redux/actions/index';
 
 class Login extends React.Component {
   state = {
@@ -23,6 +23,7 @@ class Login extends React.Component {
     dispatch(getLoginAction(
       this.state,
     ));
+    dispatch(fetchCurrencies());
     history.push('/carteira');
   };
 
