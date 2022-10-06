@@ -113,7 +113,9 @@ const mapDispatchToProps = (dispatch) => ({
 
 WalletForm.propTypes = {
   dispatchexchangerate: PropTypes.func.isRequired,
-  wallet: PropTypes.shape.isRequired,
-};
+  currencies: PropTypes.shape({
+    map: PropTypes.func,
+  }),
+}.isRequired;
 
 export default connect(mapStateToProps, mapDispatchToProps)(WalletForm);

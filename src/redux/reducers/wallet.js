@@ -1,4 +1,9 @@
-import { WALLET_INFO, FETCH_CURRENCIES, FETCH_EXCHANGE } from '../actions';
+import {
+  WALLET_INFO,
+  FETCH_CURRENCIES,
+  FETCH_EXCHANGE,
+  REMOVE_EXPENSE,
+} from '../actions';
 
 const INITIAL_STATE = {
   currency: 'BRL',
@@ -16,11 +21,13 @@ function wallet(state = INITIAL_STATE, action) {
       ...state,
       ...action.payload,
     };
+
   case FETCH_CURRENCIES:
     return {
       ...state,
       currencies: action.payload,
     };
+
   case FETCH_EXCHANGE:
     return {
       ...state,
@@ -28,6 +35,12 @@ function wallet(state = INITIAL_STATE, action) {
         ...state.expenses,
         action.payload],
     };
+
+  case REMOVE_EXPENSE:
+    return { ...state,
+      expenses: action.payload,
+    };
+
   default:
     return state;
   }

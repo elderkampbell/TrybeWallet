@@ -2,6 +2,7 @@ export const USER_INFO = 'USER_INFO';
 export const WALLET_INFO = 'WALLET_INFO';
 export const FETCH_CURRENCIES = 'FETCH_CURRENCIES';
 export const FETCH_EXCHANGE = 'FETCH_EXCHANGE';
+export const REMOVE_EXPENSE = 'REMOVE_EXPENSE';
 
 export const getLoginAction = (payload) => ({
   type: USER_INFO,
@@ -20,6 +21,11 @@ const responseApi = (payload) => ({
 
 const exchangerate = (payload) => ({
   type: FETCH_EXCHANGE,
+  payload,
+});
+
+export const removeItem = (payload) => ({
+  type: REMOVE_EXPENSE,
   payload,
 });
 
